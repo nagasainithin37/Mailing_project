@@ -56,6 +56,8 @@ function SendMail() {
       console.log(result)
     }
   }
+  console.log('data',data)
+  console.log('headers',header)
     return ( 
 <div  style={{margin:'50px'}}>
     {/* Excel reader */}
@@ -63,11 +65,11 @@ function SendMail() {
         const file=e.target.files[0]
         ExcelRenderer(file,(err,res)=>{
           if(err){
-            console.log(err)
+            alert(err)
           }
           else{
             setheader(res.rows[0])
-            setData(res.rows)
+            setData(res.rows.slice(1,))
             var x=res.rows.length
             var temp=[]
             for(var i=0;i<x;i++){
